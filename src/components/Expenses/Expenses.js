@@ -1,16 +1,19 @@
+import { useState } from 'react';
 import ExpenseItem from './ExpenseItem';
 import Card from '../UI/Card';
 import './Expenses.css';
 import ExpensesFilter from './ExpensesFilter';
 export default function Expenses({ expenses }) {
-
-
-  const expensesFilterChangeHandler = (filter) => {
-    console.log(filter, 'Expenses.js');
+  const [yearFilter, setYearFilter] = useState('2020');
+  const yearFilterChangeHanlder = (filter) => {
+    setYearFilter(filter);
   };
   return (
     <Card className='expenses'>
-      <ExpensesFilter filterValue={expensesFilterChangeHandler} />
+      <ExpensesFilter
+        yearFilter={yearFilter}
+        onFilterChange={yearFilterChangeHanlder}
+      />
       {expenses.map((expense) => (
         <ExpenseItem
           id={expense.id}
