@@ -27,6 +27,7 @@ export default function ExpenseForm(props) {
     setEnteredAmount('');
     setEnteredTitle('');
     setEnteredDate('');
+    props.hideForm(false);
   };
 
   return (
@@ -62,6 +63,9 @@ export default function ExpenseForm(props) {
         </div>
       </div>
       <div className='new-expense__actions'>
+        <button type='button' onClick={props.hideForm}>
+          Cancel
+        </button>
         <button type='submit'>Add Expense</button>
       </div>
     </form>
